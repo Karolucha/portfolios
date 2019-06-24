@@ -1,0 +1,24 @@
+{
+  "name": "Portfolio 3",
+  "children": [
+    {
+      "name": "Bonds",
+      "children": [
+        {
+          "name": "Government Bonds",
+          "children": [
+            {
+              "name": "UK Government Bonds",
+              "children": [
+                {
+                  "name": "UKGBond 1",
+                  "children": []
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

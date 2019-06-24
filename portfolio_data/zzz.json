@@ -1,0 +1,46 @@
+{
+  "text": { "name": "Portfolio 1" },
+  "children": [
+    {
+      "text": { "name": "Bonds" },
+      "children": [
+        {
+          "text": { "name": "Government Bonds" },
+          "children": [
+            {
+              "text": { "name": "GBond 1" },
+              "children": []
+            }
+          ]
+        },
+        {
+          "text": { "name": "Corporate Bonds" },
+          "children": [
+            {
+              "text": { "name": "CBond 1" },
+              "children": []
+            },
+            {
+              "text": { "name": "CBond 2" },
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "text": { "name": "Stocks" },
+      "children": [
+        {
+          "text": { "name": "Tech Stocks" },
+          "children": [
+            {
+              "text": { "name": "Tech Stock 1" },
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

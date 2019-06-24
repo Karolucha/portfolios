@@ -1,0 +1,38 @@
+{
+   "name": "Portfolio 4",
+   "children": [
+      {
+         "name": "Bonds",
+         "children": [
+            {
+               "name": "Government Bonds",
+               "children": [
+                  {
+                     "name": "UK Government Bonds",
+                     "children": [
+                        {
+                           "name": "UKGBond 1",
+                           "children": []
+                        }
+                     ]
+                  }
+               ]
+            }
+         ]
+      },
+      {
+         "name": "Stocks",
+         "children": [
+            {
+               "name": "Tech Stocks",
+               "children": [
+                  {
+                     "name": "Tech Stock 1",
+                     "children": []
+                  }
+               ]
+            }
+         ]
+      }
+   ]
+}

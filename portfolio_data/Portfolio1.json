@@ -1,0 +1,46 @@
+{
+  "name": "Portfolio 1",
+  "children": [
+    {
+      "name": "Bonds",
+      "children": [
+        {
+          "name": "Government Bonds",
+          "children": [
+            {
+              "name": "GBond 1",
+              "children": []
+            }
+          ]
+        },
+        {
+          "name": "Corporate Bonds",
+          "children": [
+            {
+              "name": "CBond 1",
+              "children": []
+            },
+            {
+              "name": "CBond 2",
+              "children": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Stocks",
+      "children": [
+        {
+          "name": "Tech Stocks",
+          "children": [
+            {
+              "name": "Tech Stock 1",
+              "children": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
