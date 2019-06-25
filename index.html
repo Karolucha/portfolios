@@ -1,121 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <title>Simple Sidebar - Start Bootstrap Template</title>
-
-  <!-- Bootstrap core CSS -->
-  <!-- <link href="static/bootstrap.min.css" rel="stylesheet"> -->
-<link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
-
-  <!-- Custom styles for this template -->
+  <title>Portfolio display</title>
+  <link href="{{ url_for('static', filename='bootstrap.min.css') }}" rel="stylesheet">
   <link href="{{ url_for('static', filename='sidebar.css') }}" rel="stylesheet">
-
   <link href="{{ url_for('static', filename='Treant.css') }}" rel="stylesheet">
-
 </head>
-
 <body>
 
   <div class="d-flex" id="wrapper">
-
-    <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
-      <div class="sidebar-heading">Start Bootstrap </div>
+      <div class="sidebar-heading">Portfolios </div>
       <div class="list-group list-group-flush">
         {% for key, value in data['sidebar'].items() %}
         <a href="#" id="{{ key }}" class="list-group-item list-group-item-action bg-light">{{ value }}</a>
         {% endfor %}
       </div>
     </div>
-    <!-- /#sidebar-wrapper -->
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
-
-      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-        <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
-
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        </div>
-      </nav>
-
       <div class="container-fluid">
       <div id="tree-simple" > </div>
-      <!-- style="width:100%; height:100%" -->
       </div>
     </div>
     <!-- /#page-content-wrapper -->
-
   </div>
   <!-- /#wrapper -->
-
   <!-- Bootstrap core JavaScript -->
   <script src="{{ url_for('static', filename='jquery.min.js') }}"></script>
   <script src="{{ url_for('static', filename='bootstrap.bundle.min.js') }}"></script>
 
   <script src="{{ url_for('static', filename='Treant.js') }}"></script>
   <script src="{{ url_for('static', filename='raphael.js') }}"></script>
-
-  <!-- Menu Toggle Script -->
-  <script>
-    $("#menu-toggle").click(function(e) {
-      e.preventDefault();
-      $("#wrapper").toggleClass("toggled");
-    });
-
-    $(".list-group-item").on('click', function(event) {
-      event.preventDefault();
-
-      console.log("Clicked: " + this.id);
-      $.getJSON("/" + this.id, function(data) {
-        //data is the JSON string
-        console.log(data);
-        simple_chart_config = {
-          chart: {
-              container: "#tree-simple"
-          },
-
-          nodeStructure: data
-      };
-      var my_chart = new Treant(simple_chart_config);
-
-
-    });
-
-  });
-  simple_chart_config = {
-    chart: {
-        container: "#tree-simple"
-    },
-
-    nodeStructure: {
-        text: { name: "Parent node" },
-        children: [
-            {
-                text: { name: "First child" }
-            },
-            {
-                text: { name: "Second child" }
-            }
-        ]
-    }
-};
-
-  var my_chart = new Treant(simple_chart_config);
-
-  </script>
-
+  <script src="{{ url_for('static', filename='treant_runner.js') }}"></script>
 </body>
 
 </html>

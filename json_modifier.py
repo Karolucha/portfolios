@@ -1,15 +1,17 @@
 import os
 import json
 
+from settings import PORTFOLIO_DIRECTORY
 
-def get_all_jsons(dir="portfolio_data"):
-    jsons = []
 
-    for filename in os.listdir(dir):
+def get_all_portfolio_jsons():
+    portfolio_files = []
+
+    for filename in os.listdir(PORTFOLIO_DIRECTORY):
         if filename.endswith(".json"):
-            jsons.append(os.path.join(dir, filename))
+            portfolio_files.append(os.path.join(PORTFOLIO_DIRECTORY, filename))
 
-    return jsons
+    return portfolio_files
 
 
 def get_json_title(json_path):
@@ -18,42 +20,32 @@ def get_json_title(json_path):
         return data["name"]
 
 
-def get_jsons_map(dir="portfolio_data"):
-    jsons = get_all_jsons(dir)
-    map = {}
-    for i, name in enumerate(jsons):
-        map["portfolio_" + str(i)] = name
-    return map
+def get_list_portfolio_id_name():
+    portfolio_files = get_all_portfolio_jsons()
+    portfolios = {}
+    for i, name in enumerate(portfolio_files):
+        portfolios["portfolio_" + str(i)] = name
+    return portfolios
 
 
 class PortfolioTreeMapper:
 
     def get_json(self, json_path):
         with open(json_path) as json_file:
-            try:
-                data = json.load(json_file)
-            except ValueError:
-                return {
-                'text': {'name': 'Sorry! Error with portfolio file!\nWrong file:{}'.format(json_path)},
-                'children': []
+            data = json.load(json_file)
+            children = self.get_portfolio(data['children'])
+            if children:
+                name = data['name']
+            else:
+                name = "No subportfolios in portfolio {}".format(data['name'])
+            return {
+                'text': {'name': name},
+                'children': children
             }
 
-            full_portfolio = {
-                'text': {'name': data['name']},
-                'children': self.get_portfolio(data['children']) or self.get_empty_child()
-            }
-
-        return full_portfolio
-
-    def get_empty_child(self):
-        return {
-                'text': {'name': 'No children in this portfolio'},
-                'children': []
-            }
     def get_portfolio(self, portfolio_children):
         children = []
         for portfolio_detail in portfolio_children:
-            print(portfolio_detail)
             p = {
                 'text': {'name': portfolio_detail['name']},
                 'children': self.get_portfolio(portfolio_detail['children'])
